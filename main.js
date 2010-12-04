@@ -58,4 +58,19 @@ $(function() {
 	// clear whole canvas
 	context.clearRect(0, 0, canvas.width(), canvas.height());
 	*/
+	
+	/*canvas.attr("width", $(window).get(0).innerWidth);
+	canvas.attr("height", $(window).get(0).innerHeight);
+	
+	context.fillRect(0, 0, canvas.width(), canvas.height());*/
+	
+	function resizeCanvas() {
+		canvas.attr("width", $(window).get(0).innerWidth);
+		canvas.attr("height", $(window).get(0).innerHeight);
+		
+		context.fillRect(0, 0, canvas.width(), canvas.height());
+	}
+	
+	resizeCanvas();
+	$(window).resize(resizeCanvas);
 });
