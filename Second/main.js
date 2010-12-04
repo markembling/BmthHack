@@ -3,6 +3,7 @@ $(function() {
 	var context = canvas.get(0).getContext("2d");
 	var canvasWidth = canvas.width();
 	var canvasHeight = canvas.height();
+	var stars = [];
 	
 	function resizeCanvas() {
 		canvas.attr("width", $(window).get(0).innerWidth);
@@ -10,30 +11,28 @@ $(function() {
 		
 		canvasWidth = canvas.width();
 		canvasHeight = canvas.height();
-	}
-	
-	function generateStars() {
-		context.fillStyle = "#FFF";
 		
-		for (var i = 0; i < 50; i++) {
-			context.beginPath();
-			context.arc(
-				Math.random() * canvasWidth, 
-				Math.random() * canvasHeight, 
-				Math.random() * 3, 
-				0, Math.PI * 2, false
-			);
-			context.closePath();
-			context.fill();
+		context.fillStyle = "#FFF";
+		for (var i in stars) {
+			stars[i].x = Math.random() * canvasWidth;
+			stars[i].y = Math.random() * canvasHeight;
+			stars[i].draw(context);
 		}
 	}
 	
-	resizeCanvas();
+	function generateStars() {
+		for (var i = 0; i < 50; i++) {
+			var s = new Star();
+			s.radius = Math.random() * 3;
+			stars.push(s);
+		}
+	}
+	
 	generateStars();
+	resizeCanvas();
 	
 	$(window).resize(function() { 
-		resizeCanvas(); 
-		generateStars(); 
+		resizeCanvas();
 	});
 	
 	
