@@ -9,13 +9,18 @@ $(function() {
 		canvas.attr("width", $(window).get(0).innerWidth);
 		canvas.attr("height", $(window).get(0).innerHeight);
 		
+		var oldCanvasWidth = canvasWidth;
+		var oldCanvasHeight = canvasHeight;
+		
 		canvasWidth = canvas.width();
 		canvasHeight = canvas.height();
 		
-		context.fillStyle = "#FFF";
+		var xRatio = canvasWidth / oldCanvasWidth;
+		var yRatio = canvasHeight / oldCanvasHeight;
+		
 		for (var i in stars) {
-			stars[i].x = Math.random() * canvasWidth;
-			stars[i].y = Math.random() * canvasHeight;
+			stars[i].x *= xRatio;
+			stars[i].y *= yRatio;
 			stars[i].draw(context);
 		}
 	}
@@ -23,6 +28,8 @@ $(function() {
 	function generateStars() {
 		for (var i = 0; i < 50; i++) {
 			var s = new Star();
+			s.x = Math.random() * canvasWidth;
+			s.y = Math.random() * canvasHeight;
 			s.radius = Math.random() * 3;
 			stars.push(s);
 		}
