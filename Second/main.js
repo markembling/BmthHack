@@ -14,4 +14,17 @@ $(function() {
 	
 	resizeCanvas();
 	$(window).resize(resizeCanvas);
+	
+	context.fillStyle = "#FFF";
+	
+	for (var i = 0; i < 50; i++) {
+		context.beginPath();
+		context.arc(
+			Math.random() * canvasWidth, 
+			Math.random() * canvasHeight, 
+			2, 0, Math.PI * 2, false
+		);
+		context.closePath();
+		context.fill();
+	}
 });
