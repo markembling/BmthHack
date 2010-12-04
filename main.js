@@ -1,5 +1,6 @@
 $(function() {
-	var context = $("#myCanvas").get(0).getContext("2d");
+	var canvas = $("#myCanvas");
+	var context = canvas.get(0).getContext("2d");
 	
 	//context.fillRect(200, 40, 100, 100);
 	//context.strokeRect(200, 40, 100, 100);
@@ -44,5 +45,17 @@ $(function() {
 	// or strokeText 
 	*/
 	
+	/*
+	context.fillRect(40, 40, 100, 100);
 	
+	context.beginPath();
+	context.arc(230, 90, 50, 0, Math.PI * 2, false);
+	context.closePath();
+	context.fill();
+	
+	context.clearRect(80, 80, 40, 40);
+	
+	// clear whole canvas
+	context.clearRect(0, 0, canvas.width(), canvas.height());
+	*/
 });
