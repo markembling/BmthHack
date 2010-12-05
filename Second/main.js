@@ -6,8 +6,8 @@ $(function() {
 	var stars = [];
 	
 	function resizeCanvas() {
-		canvas.attr("width", $(window).get(0).innerWidth);
-		canvas.attr("height", $(window).get(0).innerHeight);
+		canvas.attr("width", $(window).width());
+		canvas.attr("height", $(window).height());
 		
 		var oldCanvasWidth = canvasWidth;
 		var oldCanvasHeight = canvasHeight;
@@ -18,7 +18,7 @@ $(function() {
 		var xRatio = canvasWidth / oldCanvasWidth;
 		var yRatio = canvasHeight / oldCanvasHeight;
 		
-		for (var i in stars) {
+		for (var i in stars) {		
 			stars[i].x *= xRatio;
 			stars[i].y *= yRatio;
 			stars[i].draw(context);
